@@ -8,7 +8,7 @@ import (
 )
 
 type Config struct {
-	ClientID         int32  `yaml:"client_id"`
+	ClientID         string `yaml:"client_id"`
 	ApiEndpoint      string `yaml:"api_endpoint"`
 	ConnectionString string `yaml:"connection_string"`
 }

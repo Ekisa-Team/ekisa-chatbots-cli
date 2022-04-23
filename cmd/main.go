@@ -6,13 +6,15 @@ import (
 	"os"
 	"sort"
 
-	"github.com/Ekisa-Team/ekisa-chatbots-cli/utils"
+	"github.com/Ekisa-Team/ekisa-chatbots-cli/internal/data"
+	"github.com/Ekisa-Team/ekisa-chatbots-cli/pkg/utils"
 	"github.com/urfave/cli/v2"
 )
 
 var app = cli.NewApp()
 
 func main() {
+	// Setup CLI
 	setupInfo()
 	setupFlags()
 	setupActions()
@@ -26,6 +28,15 @@ func main() {
 		log.Fatal(err)
 	}
 
+	// Setup database connection
+	d := data.New()
+	if err := d.DB.Ping(); err != nil {
+		log.Fatal(err)
+	}
+	log.Println(d.DB.Ping())
+
+	// Attempt a graceful shutdown
+	data.Close()
 }
 
 // setupInfo configures CLI metadata
@@ -48,17 +59,19 @@ func setupFlags() {
 // setupActions configures allowed actions to be catched
 func setupActions() {
 	app.Action = func(ctx *cli.Context) error {
-		// check config path argument & load config
+		// check config path argument
 		if configPath := ctx.String("config"); configPath != "" {
+			// load config from file
 			var c utils.Config
 			config, err := c.LoadConfig(configPath)
 			if err != nil {
 				log.Fatal(err)
 			}
 
-			fmt.Printf("config.ClientID: %v\n", config.ClientID)
-			fmt.Printf("config.ConnectionString: %v\n", config.ConnectionString)
-			fmt.Printf("config.ApiEndpoint: %v\n", config.ApiEndpoint)
+			// load environment variables
+			os.Setenv("CLIENT_ID", config.ClientID)
+			os.Setenv("CONN_STRING", config.ConnectionString)
+			os.Setenv("API_ENDPOINT", config.ApiEndpoint)
 
 			return nil
 		}
