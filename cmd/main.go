@@ -1,12 +1,12 @@
 package main
 
 import (
-	"fmt"
 	"log"
 	"os"
 	"sort"
 
 	"github.com/Ekisa-Team/ekisa-chatbots-cli/internal/data"
+	"github.com/Ekisa-Team/ekisa-chatbots-cli/internal/handlers"
 	"github.com/Ekisa-Team/ekisa-chatbots-cli/internal/services"
 	"github.com/Ekisa-Team/ekisa-chatbots-cli/pkg/utils"
 	"github.com/urfave/cli/v2"
@@ -106,15 +106,7 @@ func setupCommands() {
 			Aliases: []string{"s"},
 			Usage:   "Get local database appointments and upload them to the cloud",
 			Action: func(ctx *cli.Context) error {
-				fmt.Println("Sync database appointments")
-
-				result, err := proxy.AppointmentService.PrepareAppointments()
-				if err != nil {
-					log.Fatal(err)
-				}
-
-				fmt.Println(result)
-				return nil
+				return handlers.SyncAppointments(ctx, proxy)
 			},
 		},
 		{
@@ -122,8 +114,7 @@ func setupCommands() {
 			Aliases: []string{"ch"},
 			Usage:   "Connect to WebSocket and listen for appointments to be aupdated on local database",
 			Action: func(ctx *cli.Context) error {
-				fmt.Println("Connect to remote hub")
-				return nil
+				return handlers.ConnectHub(ctx, proxy)
 			},
 		},
 	}

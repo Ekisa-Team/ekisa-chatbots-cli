@@ -9,7 +9,9 @@ type Proxy struct {
 	AppointmentService *AppointmentService
 }
 
+// Returns facade containing the application services
 func New() *Proxy {
+	// Appointments
 	appointmentService := &AppointmentService{
 		Repository: &repositories.AppointmentRepository{
 			Data: data.New(),

@@ -11,3 +11,7 @@ type AppointmentService struct {
 func (s *AppointmentService) PrepareAppointments() (string, error) {
 	return s.Repository.PrepareAppointments()
 }
+
+func (s *AppointmentService) FetchAppointments() ([]appointment.AppointmentChatbot, error) {
+	return s.Repository.FetchAppointments()
+}
