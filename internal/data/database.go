@@ -16,6 +16,10 @@ type Database struct {
 	DB *sql.DB
 }
 
+func (d *Database) getConnection() sql.DB {
+	return *d.DB
+}
+
 // Close resources used by database
 func Close() error {
 	if database == nil {

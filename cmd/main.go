@@ -7,10 +7,12 @@ import (
 	"sort"
 
 	"github.com/Ekisa-Team/ekisa-chatbots-cli/internal/data"
+	"github.com/Ekisa-Team/ekisa-chatbots-cli/internal/services"
 	"github.com/Ekisa-Team/ekisa-chatbots-cli/pkg/utils"
 	"github.com/urfave/cli/v2"
 )
 
+var proxy *services.Proxy
 var app = cli.NewApp()
 
 func main() {
@@ -23,17 +25,20 @@ func main() {
 	sort.Sort(cli.FlagsByName(app.Flags))
 	sort.Sort(cli.CommandsByName(app.Commands))
 
-	err := app.Run(os.Args)
-	if err != nil {
-		log.Fatal(err)
-	}
-
-	// Setup database connection
+	// Validate database connection
 	d := data.New()
 	if err := d.DB.Ping(); err != nil {
 		log.Fatal(err)
 	}
-	log.Println(d.DB.Ping())
+
+	// Setup proxy connection
+	proxy = services.New()
+
+	// Run CLI
+	err := app.Run(os.Args)
+	if err != nil {
+		log.Fatal(err)
+	}
 
 	// Attempt a graceful shutdown
 	data.Close()
@@ -52,6 +57,10 @@ func setupFlags() {
 			Name:    "config",
 			Aliases: []string{"c"},
 			Usage:   "Load configuration from `file`",
+		},
+		&cli.BoolFlag{
+			Name:  "verbose",
+			Usage: "Show process logs",
 		},
 	}
 }
@@ -73,6 +82,15 @@ func setupActions() {
 			os.Setenv("CONN_STRING", config.ConnectionString)
 			os.Setenv("API_ENDPOINT", config.ApiEndpoint)
 
+			// Show info logs if verbose flag is passed
+			if verbose := ctx.Bool("verbose"); verbose {
+				// print variables status
+				log.Println("Environment variables loaded")
+				log.Printf("os.Getenv(\"CLIENT_ID\"): %v\n", os.Getenv("CLIENT_ID"))
+				log.Printf("os.Getenv(\"CONN_STRING\"): %v\n", os.Getenv("CONN_STRING"))
+				log.Printf("os.Getenv(\"API_ENDPOINT\"): %v\n", os.Getenv("API_ENDPOINT"))
+			}
+
 			return nil
 		}
 
@@ -89,6 +107,13 @@ func setupCommands() {
 			Usage:   "Get local database appointments and upload them to the cloud",
 			Action: func(ctx *cli.Context) error {
 				fmt.Println("Sync database appointments")
+
+				result, err := proxy.AppointmentService.PrepareAppointments()
+				if err != nil {
+					log.Fatal(err)
+				}
+
+				fmt.Println(result)
 				return nil
 			},
 		},
