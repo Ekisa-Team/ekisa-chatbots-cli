@@ -12,7 +12,6 @@ import (
 	"github.com/urfave/cli/v2"
 )
 
-var proxy *services.Proxy
 var app = cli.NewApp()
 
 func main() {
@@ -30,9 +29,6 @@ func main() {
 	if err := d.DB.Ping(); err != nil {
 		log.Fatal(err)
 	}
-
-	// Setup proxy connection
-	proxy = services.New()
 
 	// Run CLI
 	err := app.Run(os.Args)
@@ -100,6 +96,9 @@ func setupActions() {
 
 // setupCommands configures allowed commands to be run in the CLI
 func setupCommands() {
+	// Setup proxy connection
+	proxy := services.NewProxy()
+
 	app.Commands = []*cli.Command{
 		{
 			Name:    "sync",
