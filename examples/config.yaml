@@ -1,0 +1,8 @@
+# Application
+client: <<ClientID>>
+
+# Database
+connection_string: <<MSSQL connection string>>
+
+# Webhooks
+upload_webhook_uri: <<API_ENDPOINT>>
