@@ -3,10 +3,10 @@ package services
 import (
 	"bytes"
 	"encoding/json"
+	"fmt"
 	"io/ioutil"
 	"log"
 	"net/http"
-	"os"
 
 	"github.com/Ekisa-Team/ekisa-chatbots-cli/pkg/appointment"
 )
@@ -23,8 +23,8 @@ func (s *AppointmentService) FetchAppointments() ([]appointment.AppointmentChatb
 	return s.Repository.FetchAppointments()
 }
 
-func (s *AppointmentService) UploadAppointments(appointments appointment.AppointmentChatbotList) (string, error) {
-	uri := os.Getenv("UPLOAD_APPOINTMENTS_URI")
+func (s *AppointmentService) UploadAppointments(uri string, appointments appointment.AppointmentChatbotList) (string, error) {
+	fmt.Printf("appointments: %+v\n", appointments)
 
 	// Encode data
 	encodedBody, _ := json.Marshal(appointments)
@@ -37,6 +37,9 @@ func (s *AppointmentService) UploadAppointments(appointments appointment.Appoint
 	}
 	defer resp.Body.Close()
 
+	// TODO: change color
+	log.Printf("Server response: [%v] %v\n", resp.Status, uri)
+
 	// Read the response body
 	responseBody, err := ioutil.ReadAll(resp.Body)
 	if err != nil {
@@ -45,5 +48,4 @@ func (s *AppointmentService) UploadAppointments(appointments appointment.Appoint
 
 	sb := string(responseBody)
 	return sb, nil
-
 }

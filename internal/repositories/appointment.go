@@ -67,7 +67,5 @@ func (r *AppointmentRepository) FetchAppointments() ([]appointment.AppointmentCh
 		appointments = append(appointments, a)
 	}
 
-	fmt.Println(appointments)
-
 	return appointments, nil
 }

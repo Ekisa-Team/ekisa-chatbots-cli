@@ -3,7 +3,7 @@ package appointment
 import "time"
 
 type AppointmentChatbot struct {
-	ID                 uint      `json:"Id,omitempty"`
+	ID                 uint      `json:"-"`
 	ClientID           uint16    `json:"IdCliente,omitempty"`
 	PacientID          string    `json:"IdPaciente,omitempty"`
 	PacientName        string    `json:"NombresPaciente,omitempty"`
@@ -16,7 +16,7 @@ type AppointmentChatbot struct {
 	Sent               bool      `json:"Enviado,omitempty"`
 	SentDate           time.Time `json:"FechaHoraEnvio,omitempty"`
 	Answer             string    `json:"Respuesta,omitempty"`
-	AnswerDate         bool      `json:"FechaHoraRespuesta,omitempty"`
+	AnswerDate         time.Time `json:"FechaHoraRespuesta,omitempty"`
 }
 
 type AppointmentChatbotList struct {
