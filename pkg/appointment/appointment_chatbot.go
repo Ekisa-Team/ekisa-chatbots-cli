@@ -18,3 +18,8 @@ type AppointmentChatbot struct {
 	Answer             string    `json:"Respuesta,omitempty"`
 	AnswerDate         bool      `json:"FechaHoraRespuesta,omitempty"`
 }
+
+type AppointmentChatbotList struct {
+	Appointments []AppointmentChatbot `json:"Citas,omitempty"`
+	ClientID     uint16               `json:"IdCliente,omitempty"`
+}

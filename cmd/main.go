@@ -1,14 +1,15 @@
 package main
 
 import (
+	"fmt"
 	"log"
 	"os"
 	"sort"
 
+	"github.com/Ekisa-Team/ekisa-chatbots-cli/internal/config"
 	"github.com/Ekisa-Team/ekisa-chatbots-cli/internal/data"
 	"github.com/Ekisa-Team/ekisa-chatbots-cli/internal/handlers"
 	"github.com/Ekisa-Team/ekisa-chatbots-cli/internal/services"
-	"github.com/Ekisa-Team/ekisa-chatbots-cli/pkg/utils"
 	"github.com/urfave/cli/v2"
 )
 
@@ -23,6 +24,8 @@ func main() {
 
 	sort.Sort(cli.FlagsByName(app.Flags))
 	sort.Sort(cli.CommandsByName(app.Commands))
+
+	fmt.Println("ci", os.Getenv(config.ENV_CLIENT_ID))
 
 	// Validate database connection
 	d := data.New()
@@ -63,28 +66,30 @@ func setupFlags() {
 
 // setupActions configures allowed actions to be catched
 func setupActions() {
+	os.Setenv(config.ENV_CLIENT_ID, "test")
+
 	app.Action = func(ctx *cli.Context) error {
 		// check config path argument
 		if configPath := ctx.String("config"); configPath != "" {
 			// load config from file
-			var c utils.Config
-			config, err := c.LoadConfig(configPath)
+			var c config.Config
+			cfg, err := c.ReadConfig(configPath)
 			if err != nil {
 				log.Fatal(err)
 			}
 
 			// load environment variables
-			os.Setenv("CLIENT_ID", config.ClientID)
-			os.Setenv("CONN_STRING", config.ConnectionString)
-			os.Setenv("API_ENDPOINT", config.ApiEndpoint)
+			os.Setenv(config.ENV_CLIENT_ID, cfg.Application.ClientID)
+			os.Setenv(config.ENV_CONN_STRING, cfg.Database.ConnectionString)
+			os.Setenv(config.ENV_UPLOAD_APPOINTMENTS_URI, cfg.Webhooks.UploadAppointmentsUri)
 
-			// Show info logs if verbose flag is passed
+			// show info logs if verbose flag is passed
 			if verbose := ctx.Bool("verbose"); verbose {
-				// print variables status
-				log.Println("Environment variables loaded")
-				log.Printf("os.Getenv(\"CLIENT_ID\"): %v\n", os.Getenv("CLIENT_ID"))
-				log.Printf("os.Getenv(\"CONN_STRING\"): %v\n", os.Getenv("CONN_STRING"))
-				log.Printf("os.Getenv(\"API_ENDPOINT\"): %v\n", os.Getenv("API_ENDPOINT"))
+				// print config status
+				log.Println("Config  variables loaded")
+				fmt.Printf("config.Application.ClientID: %v\n", os.Getenv(config.ENV_CLIENT_ID))
+				fmt.Printf("config.Database.ConnectionString: %v\n", os.Getenv(config.ENV_CONN_STRING))
+				fmt.Printf("config.Webhooks.UploadAppointmentsUri: %v\n", os.Getenv(config.ENV_UPLOAD_APPOINTMENTS_URI))
 			}
 
 			return nil
@@ -105,6 +110,7 @@ func setupCommands() {
 			Aliases: []string{"s"},
 			Usage:   "Get local database appointments and upload them to the cloud",
 			Action: func(ctx *cli.Context) error {
+				fmt.Printf("config.Application.ClientID: %v\n", os.Getenv(config.ENV_CLIENT_ID))
 				return handlers.SyncAppointments(ctx, proxy)
 			},
 		},
