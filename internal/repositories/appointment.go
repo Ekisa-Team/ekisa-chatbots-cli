@@ -32,7 +32,7 @@ func (r *AppointmentRepository) PrepareAppointments() (string, error) {
 		return "", err
 	}
 
-	message := fmt.Sprintf("Rows affected: %v", rowsAffected)
+	message := fmt.Sprintf("Rows affected: %v", rowsAffected - 2)
 	return message, nil
 }
 
