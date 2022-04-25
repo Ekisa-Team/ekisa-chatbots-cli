@@ -1,6 +1,7 @@
 package upload
 
 import (
+	"encoding/json"
 	"log"
 	"os"
 
@@ -46,7 +47,22 @@ func uploadAppointments(cmd *cobra.Command, args []string) {
 		log.Fatal(err)
 	}
 
+	// Update appointments in local database
 	if msg != "" {
-		log.Println(msg)
+		// Unmarshal JSON response
+		var response appointment.AppointmentChatbotResponse
+		if err := json.Unmarshal([]byte(msg), &response); err != nil {
+			log.Fatal("Couldn't unmarshal JSON")
+		}
+
+		// Loop through the data and update appointments delivery information
+		for _, a := range response.Result.ResponseSend.Result {
+			err := proxy.AppointmentService.Repository.UpdateAppointmentDeliveryInfo(a.NumeroCita, a.IDPaciente, a.Enviado, a.FechaHoraEnvio)
+			if err != nil {
+				log.Fatal(err)
+			}
+
+			log.Printf("✅ Enviado :: => cita: %v, paciente: %v", a.NumeroCita, a.NombresPaciente+" - "+a.Celular)
+		}
 	}
 }
