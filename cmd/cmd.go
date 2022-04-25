@@ -5,6 +5,7 @@ import (
 	"path/filepath"
 	"strings"
 
+	"github.com/Ekisa-Team/ekisa-chatbots-cli/cmd/listen"
 	"github.com/Ekisa-Team/ekisa-chatbots-cli/cmd/prepare"
 	"github.com/Ekisa-Team/ekisa-chatbots-cli/cmd/upload"
 	"github.com/spf13/cobra"
@@ -39,6 +40,7 @@ func init() {
 	// commands
 	RootCmd.AddCommand(prepare.NewCmdPrepare())
 	RootCmd.AddCommand(upload.NewCmdUpload())
+	RootCmd.AddCommand(listen.NewCmdListen())
 }
 
 func initConfig() {

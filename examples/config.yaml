@@ -6,3 +6,6 @@ connection_string: <<MSSQL connection string>>
 
 # Webhooks
 upload_webhook_uri: <<API_ENDPOINT>>
+
+# hub
+notifications_hub: <<NOTIFICATION_HUB>>
