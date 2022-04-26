@@ -1,0 +1,25 @@
+name: "Create assets"
+
+on:
+  release:
+    types: [published]
+
+jobs:
+  build:
+    run-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Run build script
+        shell: bash
+        run: |
+          chmod +x ./script/build.sh
+          ./script/build.sh
+      - name: Upload windows-amd64
+        id: upload-win-64
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ github.event.release.upload_url }}
+          asset_path: ./bin/ekisa-chatbots-cli-windows-amd64.exe
+          asset_name: ekisa-chatbots_${{ github.event.release.tag_name }}_windows_amd64.exe
