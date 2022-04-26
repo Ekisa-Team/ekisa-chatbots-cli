@@ -6,37 +6,9 @@
 
 ### Windows
 
-Actualmente `ekisa-chatbots` solo está disponible vía [scoop](https://scoop.sh/). Próximamente estará dispobile en [WinGet](https://github.com/microsoft/winget-cli), [Chocolatey](https://chocolatey.org) y como un MSI descargable.
+Los archivos binarios de windows en las arquitecturas de 32 y 64 bits están disponibles en la [página de releases](https://github.com/Ekisa-Team/ekisa-chatbots-cli/releases/latest), en la sección de **assets**.
 
-#### scoop
-
-| Install:                       | Upgrade:                      |
-| ------------------------------ | ----------------------------- |
-| `scoop install ekisa-chatbots` | `scoop update ekisa-chatbots` |
-
-#### WinGet
-
-| Install:                                | Upgrade:                                |
-| --------------------------------------- | --------------------------------------- |
-| `winget install --id EkisaChatbots.cli` | `winget upgrade --id EkisaChatbots.cli` |
-
-#### Chocolatey
-
-| Install:                       | Upgrade:                       |
-| ------------------------------ | ------------------------------ |
-| `choco install ekisa-chatbots` | `choco upgrade ekisa-chatbots` |
-
-### Linux
-
-Sin definir
-
-### macOS
-
-Sin definir
-
-### MSI firmado
-
-Los instaladores MSI estarán disponibles en la [página de releases](https://github.com/Ekisa-Team/ekisa-chatbots-cli/releases/latest)
+Aunque no es necesario instalar los ejecutables ya que son binarios compilados, es necesario agregarlos al PATH para que estén disponibles en todo el sistema.
 
 ## **Documentación**
 
@@ -151,7 +123,7 @@ ekisa-chatbots prepare --config C:\Users\juanm\Downloads
 ekisa-chatbots prepare -c C:\Users\juanm\Downloads
 ```
 
-> Ver [plantilla](https://github.com/Ekisa-Team/ekisa-chatbots-cli/blob/main/examples/config.yaml) del archivo de configuración
+> Ver [plantilla](https://github.com/Ekisa-Team/ekisa-chatbots-cli/blob/main/config.yaml) del archivo de configuración
 
 ## **Otro**
 

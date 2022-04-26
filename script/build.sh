@@ -1,11 +1,6 @@
 #!/usr/bin/env bash
 
-package=$1
-
-if [[ -z "$package" ]]; then
-    echo "usage: $0 <package-name>"
-    exit 1
-fi
+package=github.com/Ekisa-Team/ekisa-chatbots-cli
 
 package_split=(${package//\// })
 package_name=${package_split[-1]}
@@ -21,7 +16,7 @@ for platform in "${platforms[@]}"; do
         output_name+='.exe'
     fi
 
-    env GOOS=$GOOS GOARCH=$GOARCH go build -o build/$output_name $package
+    env GOOS=$GOOS GOARCH=$GOARCH go build -o bin/$output_name $package
     if [ $? -ne 0 ]; then
         echo 'An error has ocurred. Aborting the script execution...'
         exit 1
