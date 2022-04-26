@@ -1,4 +1,4 @@
 build:
-	go build -o bin/ekch.exe	
+	go build -o build/ekisa-chatbots.exe	
 
 .PHONY: build

@@ -1,18 +1,18 @@
 # **EkisaChatbots CLI**
 
-`ekch` es una interfaz de línea de comandos que funciona como orquestador para gestionar el flujo de procesos que se dan entre la API [Ekisa.Chatbots](https://github.com/Ekisa-Team/Ekisa.Chatbots) y el middleware [Ekisa.Chatbots.Api](https://github.com/Ekisa-Team/Ekisa.Chatbots.Api).
+`ekisa-chatbots` es una interfaz de línea de comandos que funciona como orquestador para gestionar el flujo de procesos que se dan entre la API [Ekisa.Chatbots](https://github.com/Ekisa-Team/Ekisa.Chatbots) y el middleware [Ekisa.Chatbots.Api](https://github.com/Ekisa-Team/Ekisa.Chatbots.Api).
 
 ## **Instalación**
 
 ### Windows
 
-Actualmente `ekch` solo está disponible vía [scoop](https://scoop.sh/). Próximamente estará dispobile en [WinGet](https://github.com/microsoft/winget-cli), [Chocolatey](https://chocolatey.org) y como un MSI descargable.
+Actualmente `ekisa-chatbots` solo está disponible vía [scoop](https://scoop.sh/). Próximamente estará dispobile en [WinGet](https://github.com/microsoft/winget-cli), [Chocolatey](https://chocolatey.org) y como un MSI descargable.
 
 #### scoop
 
-| Install:             | Upgrade:            |
-| -------------------- | ------------------- |
-| `scoop install ekch` | `scoop update ekch` |
+| Install:                       | Upgrade:                      |
+| ------------------------------ | ----------------------------- |
+| `scoop install ekisa-chatbots` | `scoop update ekisa-chatbots` |
 
 #### WinGet
 
@@ -22,9 +22,9 @@ Actualmente `ekch` solo está disponible vía [scoop](https://scoop.sh/). Próxi
 
 #### Chocolatey
 
-| Install:             | Upgrade:             |
-| -------------------- | -------------------- |
-| `choco install ekch` | `choco upgrade ekch` |
+| Install:                       | Upgrade:                       |
+| ------------------------------ | ------------------------------ |
+| `choco install ekisa-chatbots` | `choco upgrade ekisa-chatbots` |
 
 ### Linux
 
@@ -56,7 +56,7 @@ upload          // Toma las citas de la tabla ChatbotCitas y las sube a la nube
 
 ```go
 Usage:
-  ekch completion [command]
+  ekisa-chatbots completion [command]
 
 Subcommands:
   bash          // Genera script de autocompletado para bash
@@ -72,17 +72,17 @@ Flags:
 
 ```go
 Usage:
-  ekch [flags]
-  ekch [command]
+  ekisa-chatbots [flags]
+  ekisa-chatbots [command]
 
 Subcommands:
   completion         // Ayudas para el comando completion
-  help               // Ayudas para ekch
+  help               // Ayudas para ekisa-chatbots
   prepare            // Ayudas para el comando prepare
   upload             // Ayudas para el comando upload
 
 Flags:
-  -h, --help         // Ayudas para ekch
+  -h, --help         // Ayudas para ekisa-chatbots
 
 Global flags:
   -c, --config       // Ruta del archivo de configuración (con extensión)
@@ -92,7 +92,7 @@ Global flags:
 
 ```go
 Usage:
-  ekch prepare [flags]
+  ekisa-chatbots prepare [flags]
 
 Flags:
   -h, --help         // Ayudas para el comando prepare
@@ -105,7 +105,7 @@ Global flags:
 
 ```go
 Usage:
-  ekch upload [flags]
+  ekisa-chatbots upload [flags]
 
 Flags:
   -h, --help         // Ayudas para el comando upload
@@ -134,9 +134,9 @@ upload_webhook_uri: https://ekisa-chatbots-api.azurewebsites.net/api/chatbotcita
 El CLI buscará ese archivo en las siguientes ubicaciones:
 
 ```shell
-.\ekch-conf.yaml                                    Raiz de la carpeta donde se encuentra instalado el ejecutable
-$HOME\ekch-conf.yaml                                C:\Users\username\ekch-conf
-$HOME\.config\ekisa-chatbots\ekch-conf.yaml         C:\Users\username\.config\ekisa-chatbots
+.\ekisa-chatbots-conf.yaml                                    Raiz de la carpeta donde se encuentra instalado el ejecutable
+$HOME\ekisa-chatbots-conf.yaml                                C:\Users\username\ekisa-chatbots-conf
+$HOME\.config\ekisa-chatbots\ekisa-chatbots-conf.yaml         C:\Users\username\.config\ekisa-chatbots
 ```
 
 Opcionalmente se le puede especificar explícitamente la ruta del archivo de configuración con la bandera global `--config` al ejectuar cualquier comando transaccional.
@@ -144,11 +144,11 @@ Opcionalmente se le puede especificar explícitamente la ruta del archivo de con
 Ejemplo:
 
 ```
-ekch prepare --config C:\Users\juanm\Downloads
+ekisa-chatbots prepare --config C:\Users\juanm\Downloads
 
 ó
 
-ekch prepare -c C:\Users\juanm\Downloads
+ekisa-chatbots prepare -c C:\Users\juanm\Downloads
 ```
 
 > Ver [plantilla](https://github.com/Ekisa-Team/ekisa-chatbots-cli/blob/main/examples/config.yaml) del archivo de configuración
