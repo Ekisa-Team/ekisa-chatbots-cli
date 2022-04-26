@@ -15,7 +15,7 @@ var (
 	config string
 
 	RootCmd = &cobra.Command{
-		Use:   "ekisa-chatbots",
+		Use:   "ekch",
 		Short: "EkisaChatbots CLI",
 		Run: func(cmd *cobra.Command, args []string) {
 			// fallback on default help if no args/flags are passed
@@ -69,7 +69,7 @@ func initConfig() {
 		}
 	} else {
 		// if --config is not passed, adds multiple locations to search for config file
-		viper.SetConfigName("config")
+		viper.SetConfigName("ekch-conf")
 		viper.SetConfigType("yaml")
 		viper.AddConfigPath(".")
 		viper.AddConfigPath("$HOME")
