@@ -22,15 +22,15 @@ if ($testPath) {
 
 # Download binary
 Write-Output "Downloading latest version of EkisaChatbots CLI..."
-Start-BitsTransfer -Source "https://github.com/Ekisa-Team/ekisa-chatbots-cli/releases/download/v0.1.9-beta/ec_v0.1.9-beta-windows_amd64.zip" -Destination "ec_v0.1.9-beta-windows_amd64.zip"    
+Start-BitsTransfer -Source "https://github.com/Ekisa-Team/ekisa-chatbots-cli/releases/latest/download/ec-windows-386.zip" -Destination "ec-windows-386.zip"    
 
 # Extract ZIP file
 Write-Output "Extracting..."
-Expand-Archive "ec_v0.1.9-beta-windows_amd64.zip" $installationPath
-Remove-Item "ec_v0.1.9-beta-windows_amd64.zip" -Force
+Expand-Archive "ec-windows-386.zip" $installationPath
+Remove-Item "ec-windows-386.zip" -Force
 
 # Rename file
-$fileName = (Get-Item $binaryPath).FullName + "\ec-windows-amd64.exe"
+$fileName = (Get-Item $binaryPath).FullName + "\ec-windows-386.exe"
 $newFileName = (Get-Item $binaryPath).FullName + "\ekisa-chatbots.exe"
 Rename-Item $fileName $newFileName
 
