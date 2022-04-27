@@ -1,5 +1,4 @@
 #!/usr/bin/env bash
-
 package=github.com/Ekisa-Team/ekisa-chatbots-cli
 
 platforms=("windows/amd64" "windows/386")

@@ -24,6 +24,8 @@ goto:eof
 :: Steps
 :download_latests_release
     call:ECHOINFO "Downloading EkisaChatbots CLI from https://github.com/Ekisa-Team/ekisa-chatbots-cli/releases/tag/latest ..."
-    
+
+    powershell -command "Start-BitsTransfer -Source https://github.com/Ekisa-Team/ekisa-chatbots-cli/releases/download/v0.1.9-beta/ec_v0.1.9-beta-windows_386.zip -Destination ec_v0.1.9-beta-windows_386.zip"
+    powershell -command "Expand-Archive ec_v0.1.9-beta-windows_386.zip C:\Tools
 :end
     cmd.exe /k cmd /c
