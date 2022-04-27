@@ -23,3 +23,4 @@ jobs:
           upload_url: ${{ github.event.release.upload_url }}
           asset_path: ./bin/ekisa-chatbots-cli-windows-amd64.exe
           asset_name: ekisa-chatbots_${{ github.event.release.tag_name }}_windows_amd64.exe
+          asset_content_type: application/vnd.microsoft.portable-executable
