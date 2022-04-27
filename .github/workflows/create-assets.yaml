@@ -9,11 +9,18 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
+
       - name: Run build script
         shell: bash
         run: |
           chmod +x ./script/build.sh
           ./script/build.sh
+
+      - name: Zip assets
+        run: |
+          zip ec${{ github.event.release.tag_name }}_windows_amd64.zip ./bin/ec-windows-amd64
+          zip ec${{ github.event.release.tag_name }}_windows_386.zip ./bin/ec-windows-386
+
       - name: Upload windows-amd64
         id: upload-win-64
         uses: actions/upload-release-asset@v1
@@ -21,6 +28,17 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ github.event.release.upload_url }}
-          asset_path: ./bin/ekisa-chatbots-cli-windows-amd64.exe
-          asset_name: ekisa-chatbots_${{ github.event.release.tag_name }}_windows_amd64.exe
-          asset_content_type: application/vnd.microsoft.portable-executable
+          asset_path: ./bin/ec-windows-amd64.zip
+          asset_name: ec${{ github.event.release.tag_name }}_windows_amd64.zip
+          asset_content_type: application/zip
+
+      - name: Upload windows-386
+        id: upload-win-386
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ github.event.release.upload_url }}
+          asset_path: ./bin/ec-windows-386.zip
+          asset_name: ec${{ github.event.release.tag_name }}_windows_386.zip
+          asset_content_type: application/zip
