@@ -18,8 +18,8 @@ jobs:
 
       - name: Zip assets
         run: |
-          zip ec${{ github.event.release.tag_name }}_windows_amd64.zip ./bin/ec-windows-amd64
-          zip ec${{ github.event.release.tag_name }}_windows_386.zip ./bin/ec-windows-386
+          zip ./bin/ec${{ github.event.release.tag_name }}_windows_amd64.zip ./bin/ec-windows-amd64.exe
+          zip ./bin/ec${{ github.event.release.tag_name }}_windows_386.zip ./bin/ec-windows-386.exe
 
       - name: Upload windows-amd64
         id: upload-win-64
