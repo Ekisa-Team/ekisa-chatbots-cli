@@ -31,7 +31,7 @@ Remove-Item "ec-windows-386.zip" -Force
 
 # Rename file
 $fileName = (Get-Item $binaryPath).FullName + "\ec-windows-386.exe"
-$newFileName = (Get-Item $binaryPath).FullName + "\ekisa-chatbots.exe"
+$newFileName = (Get-Item $binaryPath).FullName + "\ekisa-chatbots-32.exe"
 Rename-Item $fileName $newFileName
 
 Write-Output "Adding CLI to the PATH..."        

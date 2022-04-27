@@ -4,9 +4,42 @@
 
 ## **Instalación**
 
-### Windows
+Ejecutar el siguiente comando desde `PowerShell` para instalar **EkisaChatbots CLI** en su ubicación por defecto (`c:\EkisaChatbots CLI`)
 
-Los instaladores y los binarios en las arquitecturas de 32 y 64 bits se encuentran disponibles en la [página de releases](https://github.com/Ekisa-Team/ekisa-chatbots-cli/releases/latest), en la sección de **assets**.
+**Windows 64 bits**
+
+```ps1
+Invoke-Expression (New-Object System.Net.WebClient).DownloadString('https://bit.ly/3Kr8xGh')
+
+# o más corto
+iwr -useb https://bit.ly/3Kr8xGh | iex
+```
+
+**Windows 32 bits**
+
+```ps1
+Invoke-Expression (New-Object System.Net.WebClient).DownloadString('https://bit.ly/3rW4mff')
+
+# o más corto
+iwr -useb https://bit.ly/3rW4mff | iex
+```
+
+Una vez instalado, ejecutar `ekisa-chatbots help` para recibir instrucciones y verificar que la instalación fue exitosa.
+
+> Si la instalación fue Windows 32 bits, se debe utilizar el comando `ekisa-chatbots-32` en lugar de `ekisa-chatbots`
+
+Adicionalmente los binarios en las arquitecturas de 32 y 64 bits se encuentran disponibles en la [página de releases](https://github.com/Ekisa-Team/ekisa-chatbots-cli/releases/latest), en la sección de **assets**.
+
+## **Desinstalación**
+
+Ejecutar el siguiente comando desde `PowerShell` para desinstalar **EkisaChatbots CLI**
+
+```ps1
+Invoke-Expression (New-Object System.Net.WebClient).DownloadString('https://bit.ly/3xTRlXp')
+
+# o más corto
+iwr -useb https://bit.ly/3xTRlXp | iex
+```
 
 ## **Documentación**
 
