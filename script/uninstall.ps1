@@ -1,13 +1,23 @@
+Write-Output "Initializing..."
+
+# Check powershell version
+if (($PSVersionTable.PSVersion.Major) -lt 5) {
+    Write-Output "PowerShell 5 or later is required to run EkisaChatbots CLI"
+    Write-Output "Upgrade PowerShell: https://docs.microsoft.com/en-us/powershell/scripting/setup/installing-windows-powershell"
+    break
+}
+
 $installationPath = "C:\EkisaChatbots CLI"
 $binaryPath = $installationPath + "\bin"
 
+# Check if it's already installed
 $testPath = Test-Path -Path $binaryPath
 
 if ($testPath) {
     "Uninstalling EkisaChatbots CLI..."
     
     # Remove bin file
-    Remove-Item $installationPath -Recurse
+    Remove-Item $installationPath -Recurse -Force
     
     # Get all path variables
     $path = [System.Environment]::GetEnvironmentVariable('Path', [EnvironmentVariableTarget]::User)
@@ -18,10 +28,10 @@ if ($testPath) {
     # Update path environment variable
     [System.Environment]::SetEnvironmentVariable('Path', $path, [EnvironmentVariableTarget]::User)
 
-    Write-Host "EkisaChatbots CLI was uninstalled successfully" -ForegroundColor Green
+    Write-Host "EkisaChatbots CLI was uninstalled successfully!" -f darkgreen
 }
 else {
-    Write-Host "EkisaChatbots CLI is not installed." -ForegroundColor Yellow
+    Write-Host "EkisaChatbots CLI is not installed." -f Yellow
 }
 
 Pause

@@ -21,7 +21,7 @@ jobs:
           zip ./bin/ec_${{ github.event.release.tag_name }}-windows-amd64.zip ./bin/ec-windows-amd64.exe
           zip ./bin/ec_${{ github.event.release.tag_name }}-windows-386.zip ./bin/ec-windows-386.exe
 
-      - name: Upload windows-amd64
+      - name: Upload windows-amd64 binary
         id: upload-win-64
         uses: actions/upload-release-asset@v1
         env:
@@ -32,7 +32,7 @@ jobs:
           asset_name: ec_${{ github.event.release.tag_name }}-windows_amd64.zip
           asset_content_type: application/zip
 
-      - name: Upload windows-386
+      - name: Upload windows-386 binary
         id: upload-win-386
         uses: actions/upload-release-asset@v1
         env:

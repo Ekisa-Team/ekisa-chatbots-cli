@@ -6,9 +6,7 @@
 
 ### Windows
 
-Los archivos binarios de windows en las arquitecturas de 32 y 64 bits están disponibles en la [página de releases](https://github.com/Ekisa-Team/ekisa-chatbots-cli/releases/latest), en la sección de **assets**.
-
-Aunque no es necesario instalar los ejecutables ya que son binarios compilados, es necesario agregarlos al PATH para que estén disponibles en todo el sistema.
+Los instaladores y los binarios en las arquitecturas de 32 y 64 bits se encuentran disponibles en la [página de releases](https://github.com/Ekisa-Team/ekisa-chatbots-cli/releases/latest), en la sección de **assets**.
 
 ## **Documentación**
 
