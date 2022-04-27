@@ -18,8 +18,8 @@ jobs:
 
       - name: Zip assets
         run: |
-          zip ./bin/ec_${{ github.event.release.tag_name }}-windows-amd64.zip ./bin/ec-windows-amd64.exe
-          zip ./bin/ec_${{ github.event.release.tag_name }}-windows-386.zip ./bin/ec-windows-386.exe
+          zip ./bin/ec-windows-amd64.zip ./bin/ec-windows-amd64.exe
+          zip ./bin/ec-windows-386.zip ./bin/ec-windows-386.exe
 
       - name: Upload windows-amd64 binary
         id: upload-win-64
@@ -28,8 +28,8 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ github.event.release.upload_url }}
-          asset_path: ./bin/ec_${{ github.event.release.tag_name }}-windows-amd64.zip
-          asset_name: ec_${{ github.event.release.tag_name }}-windows_amd64.zip
+          asset_path: ./bin/ec-windows-amd64.zip
+          asset_name: ec-windows-amd64.zip
           asset_content_type: application/zip
 
       - name: Upload windows-386 binary
@@ -39,6 +39,6 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ github.event.release.upload_url }}
-          asset_path: ./bin/ec_${{ github.event.release.tag_name }}-windows-386.zip
-          asset_name: ec_${{ github.event.release.tag_name }}-windows_386.zip
+          asset_path: ./bin/ec-windows-386.zip
+          asset_name: ec-windows-386.zip
           asset_content_type: application/zip
