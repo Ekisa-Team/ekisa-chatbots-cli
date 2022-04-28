@@ -11,8 +11,7 @@ Ejecutar el siguiente comando desde `PowerShell` para instalar **Kibot CLI** en 
 ```ps1
 Invoke-Expression (New-Object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/Ekisa-Team/kibot-cli/main/script/install-amd64.ps1')
 
-# ó
-
+# o más corto
 iwr -useb https://raw.githubusercontent.com/Ekisa-Team/kibot-cli/main/script/install-amd64.ps1 | iex
 ```
 
@@ -21,22 +20,21 @@ iwr -useb https://raw.githubusercontent.com/Ekisa-Team/kibot-cli/main/script/ins
 ```ps1
 Invoke-Expression (New-Object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/Ekisa-Team/kibot-cli/main/script/install-386.ps1')
 
-# ó
-
+# o más corto
 iwr -useb https://raw.githubusercontent.com/Ekisa-Team/kibot-cli/main/script/install-386.ps1 | iex
 ```
 
 Una vez instalado, ejecutar `kibot help` para recibir instrucciones y verificar que la instalación fue exitosa.
 
-> **Nota:** Si obtiene un error al momento de intentar instalar, es posible que deba cambiar la política de ejecución de `PowerShell` con el siguiente comando:
+**Nota:** si obtiene un error al momento de intentar instalar, es posible que deba cambiar la política de ejecución de `PowerShell` con el siguiente comando:
 
 ```ps1
 Set-ExecutionPolicy RemoteSigned -scope CurrentUser
 ```
 
-> **Nota:** En caso de que el binario instalado sea de 32 bits, se debe utilizar el comando `kibot32` en lugar de `kibot`
+**Nota:** en caso de que el binario instalado sea de 32 bits, se debe utilizar el comando `kibot32` en lugar de `kibot`
 
-> **Nota:** Los binarios en las arquitecturas de 32 y 64 bits se encuentran disponibles en la [página de releases](https://github.com/Ekisa-Team/kibot-cli/releases/latest), en la sección de **assets**.
+**Nota:** si desea realizar una instalación manual, los binarios en las arquitecturas de 32 y 64 bits se encuentran disponibles en la [página de releases](https://github.com/Ekisa-Team/kibot-cli/releases/latest), en la sección de **assets**.
 
 ## **Desinstalación**
 
