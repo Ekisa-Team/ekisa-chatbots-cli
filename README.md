@@ -152,11 +152,11 @@ Opcionalmente se le puede especificar explícitamente la ruta del archivo de con
 Ejemplo:
 
 ```
-kibot appointment prepare --config C:\Users\username\Downloads\kibot-config.yaml
+kibot prepare --config C:\Users\username\Downloads\kibot-config.yaml
 
 ó
 
-kibot appointment prepare -c C:\Users\username\Downloads\kibot-config.yaml
+kibot prepare -c C:\Users\username\Downloads\kibot-config.yaml
 ```
 
 > Ver [plantilla](https://github.com/Ekisa-Team/kibot-cli/blob/main/config.yaml) del archivo de configuración
