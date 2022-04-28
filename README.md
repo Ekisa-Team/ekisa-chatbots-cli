@@ -19,11 +19,11 @@ iwr -useb https://raw.githubusercontent.com/Ekisa-Team/kibot-cli/main/script/ins
 **Windows 32 bits**
 
 ```ps1
-Invoke-Expression (New-Object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/Ekisa-Team/kibot-cli/main/script/install-368.ps1')
+Invoke-Expression (New-Object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/Ekisa-Team/kibot-cli/main/script/install-386.ps1')
 
 # ó
 
-iwr -useb https://raw.githubusercontent.com/Ekisa-Team/kibot-cli/main/script/install-368.ps1 | iex
+iwr -useb https://raw.githubusercontent.com/Ekisa-Team/kibot-cli/main/script/install-386.ps1 | iex
 ```
 
 Una vez instalado, ejecutar `kibot help` para recibir instrucciones y verificar que la instalación fue exitosa.
