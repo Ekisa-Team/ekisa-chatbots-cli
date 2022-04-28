@@ -1,8 +1,8 @@
 package services
 
 import (
-	"github.com/Ekisa-Team/ekisa-chatbots-cli/internal/data"
-	"github.com/Ekisa-Team/ekisa-chatbots-cli/internal/repositories"
+	"github.com/Ekisa-Team/kibot-cli/internal/data"
+	"github.com/Ekisa-Team/kibot-cli/internal/repositories"
 )
 
 type Proxy struct {

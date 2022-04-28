@@ -5,8 +5,8 @@ import (
 	"path/filepath"
 	"strings"
 
-	"github.com/Ekisa-Team/ekisa-chatbots-cli/cmd/prepare"
-	"github.com/Ekisa-Team/ekisa-chatbots-cli/cmd/upload"
+	"github.com/Ekisa-Team/kibot-cli/cmd/prepare"
+	"github.com/Ekisa-Team/kibot-cli/cmd/upload"
 	"github.com/spf13/cobra"
 	"github.com/spf13/viper"
 )
@@ -15,8 +15,8 @@ var (
 	config string
 
 	RootCmd = &cobra.Command{
-		Use:   "ekisa-chatbots",
-		Short: "EkisaChatbots CLI",
+		Use:   "kibot",
+		Short: "Kibot CLI",
 		Run: func(cmd *cobra.Command, args []string) {
 			// fallback on default help if no args/flags are passed
 			cmd.HelpFunc()(cmd, args)
@@ -69,10 +69,10 @@ func initConfig() {
 		}
 	} else {
 		// if --config is not passed, adds multiple locations to search for config file
-		viper.SetConfigName("config")
+		viper.SetConfigName("kibot-config")
 		viper.SetConfigType("yaml")
 		viper.AddConfigPath(".")
-		viper.AddConfigPath("$HOME\\.config\\ekisa-chatbots")
+		viper.AddConfigPath("$HOME\\.config\\kibot")
 
 		if err := viper.ReadInConfig(); err != nil {
 			log.Fatal(err)

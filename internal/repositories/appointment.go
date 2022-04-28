@@ -4,8 +4,8 @@ import (
 	"fmt"
 	"time"
 
-	"github.com/Ekisa-Team/ekisa-chatbots-cli/internal/data"
-	"github.com/Ekisa-Team/ekisa-chatbots-cli/pkg/appointment"
+	"github.com/Ekisa-Team/kibot-cli/internal/data"
+	"github.com/Ekisa-Team/kibot-cli/pkg/appointment"
 )
 
 type AppointmentRepository struct {

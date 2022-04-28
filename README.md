@@ -1,44 +1,46 @@
-# **EkisaChatbots CLI**
+# **Kibot CLI**
 
-`ekisa-chatbots` es una interfaz de línea de comandos que funciona como orquestador para gestionar el flujo de procesos que se dan entre la API [Ekisa.Chatbots](https://github.com/Ekisa-Team/Ekisa.Chatbots) y el middleware [Ekisa.Chatbots.Api](https://github.com/Ekisa-Team/Ekisa.Chatbots.Api).
+`kibot` es una interfaz de línea de comandos que funciona como orquestador para gestionar el flujo de procesos que se dan entre [Kibot](https://github.com/Ekisa-Team/Kibot) y el middleware [Kibot.Quiron.Middleware](https://github.com/Ekisa-Team/Kibot.Quiron.Middleware).
 
 ## **Instalación**
 
-Ejecutar el siguiente comando desde `PowerShell` para instalar **EkisaChatbots CLI** en su ubicación por defecto (`c:\EkisaChatbots CLI`)
+Ejecutar el siguiente comando desde `PowerShell` para instalar **Kibot CLI** en su ubicación por defecto (`c:\Kibot CLI`)
 
 **Windows 64 bits**
 
 ```ps1
-Invoke-Expression (New-Object System.Net.WebClient).DownloadString('https://bit.ly/3Kr8xGh')
+Invoke-Expression (New-Object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/Ekisa-Team/kibot-cli/main/script/install-amd64.ps1')
 
-# o más corto
-iwr -useb https://bit.ly/3Kr8xGh | iex
+# ó
+
+iwr -useb https://raw.githubusercontent.com/Ekisa-Team/kibot-cli/main/script/install-amd64.ps1 | iex
 ```
 
 **Windows 32 bits**
 
 ```ps1
-Invoke-Expression (New-Object System.Net.WebClient).DownloadString('https://bit.ly/3rW4mff')
+Invoke-Expression (New-Object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/Ekisa-Team/kibot-cli/main/script/install-368.ps1')
 
-# o más corto
-iwr -useb https://bit.ly/3rW4mff | iex
+# ó
+
+iwr -useb https://raw.githubusercontent.com/Ekisa-Team/kibot-cli/main/script/install-368.ps1 | iex
 ```
 
-Una vez instalado, ejecutar `ekisa-chatbots help` para recibir instrucciones y verificar que la instalación fue exitosa.
+Una vez instalado, ejecutar `kibot help` para recibir instrucciones y verificar que la instalación fue exitosa.
 
-> Si la instalación fue Windows 32 bits, se debe utilizar el comando `ekisa-chatbots-32` en lugar de `ekisa-chatbots`
+> En caso de que el binario instalado sea el de 32 bits, se debe utilizar el comando `kibot32` en lugar de `kibot`
 
-Adicionalmente los binarios en las arquitecturas de 32 y 64 bits se encuentran disponibles en la [página de releases](https://github.com/Ekisa-Team/ekisa-chatbots-cli/releases/latest), en la sección de **assets**.
+Adicionalmente los binarios en las arquitecturas de 32 y 64 bits se encuentran disponibles en la [página de releases](https://github.com/Ekisa-Team/kibot-cli/releases/latest), en la sección de **assets**.
 
 ## **Desinstalación**
 
-Ejecutar el siguiente comando desde `PowerShell` para desinstalar **EkisaChatbots CLI**
+Ejecutar el siguiente comando desde `PowerShell` para desinstalar **Kibot CLI**
 
 ```ps1
-Invoke-Expression (New-Object System.Net.WebClient).DownloadString('https://bit.ly/3xTRlXp')
+Invoke-Expression (New-Object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/Ekisa-Team/kibot-cli/main/script/uninstall.ps1')
 
 # o más corto
-iwr -useb https://bit.ly/3xTRlXp | iex
+iwr -useb https://raw.githubusercontent.com/Ekisa-Team/kibot-cli/main/script/uninstall.ps1 | iex
 ```
 
 ## **Documentación**
@@ -59,7 +61,7 @@ upload          // Toma las citas de la tabla ChatbotCitas y las sube a la nube
 
 ```go
 Usage:
-  ekisa-chatbots completion [command]
+  kibot completion [command]
 
 Subcommands:
   bash          // Genera script de autocompletado para bash
@@ -75,17 +77,17 @@ Flags:
 
 ```go
 Usage:
-  ekisa-chatbots [flags]
-  ekisa-chatbots [command]
+  kibot [flags]
+  kibot [command]
 
 Subcommands:
   completion         // Ayudas para el comando completion
-  help               // Ayudas para ekisa-chatbots
+  help               // Ayudas para kibot
   prepare            // Ayudas para el comando prepare
   upload             // Ayudas para el comando upload
 
 Flags:
-  -h, --help         // Ayudas para ekisa-chatbots
+  -h, --help         // Ayudas para kibot
 
 Global flags:
   -c, --config       // Ruta del archivo de configuración (con extensión)
@@ -95,7 +97,7 @@ Global flags:
 
 ```go
 Usage:
-  ekisa-chatbots prepare [flags]
+  kibot appointment prepare [flags]
 
 Flags:
   -h, --help         // Ayudas para el comando prepare
@@ -108,7 +110,7 @@ Global flags:
 
 ```go
 Usage:
-  ekisa-chatbots upload [flags]
+  kibot appointment upload [flags]
 
 Flags:
   -h, --help         // Ayudas para el comando upload
@@ -137,9 +139,8 @@ upload_webhook_uri: https://ekisa-chatbots-api.azurewebsites.net/api/chatbotcita
 El CLI buscará ese archivo en las siguientes ubicaciones:
 
 ```shell
-.\ekisa-chatbots-conf.yaml                                    Raiz de la carpeta donde se encuentra instalado el ejecutable
-$HOME\ekisa-chatbots-conf.yaml                                C:\Users\username\ekisa-chatbots-conf
-$HOME\.config\ekisa-chatbots\ekisa-chatbots-conf.yaml         C:\Users\username\.config\ekisa-chatbots
+.\kibot-config.yaml                                    Raiz de la carpeta donde se encuentra instalado el ejecutable
+$HOME\.config\kibot\kibot-config.yaml                  C:\Users\username\.config\kibot\kibot-config.yaml
 ```
 
 Opcionalmente se le puede especificar explícitamente la ruta del archivo de configuración con la bandera global `--config` al ejectuar cualquier comando transaccional.
@@ -147,17 +148,17 @@ Opcionalmente se le puede especificar explícitamente la ruta del archivo de con
 Ejemplo:
 
 ```
-ekisa-chatbots prepare --config C:\Users\juanm\Downloads
+kibot appointment prepare --config C:\Users\username\Downloads\kibot-config.yaml
 
 ó
 
-ekisa-chatbots prepare -c C:\Users\juanm\Downloads
+kibot appointment prepare -c C:\Users\username\Downloads\kibot-config.yaml
 ```
 
-> Ver [plantilla](https://github.com/Ekisa-Team/ekisa-chatbots-cli/blob/main/config.yaml) del archivo de configuración
+> Ver [plantilla](https://github.com/Ekisa-Team/kibot-cli/blob/main/config.yaml) del archivo de configuración
 
-## **Otro**
+## **Otros**
 
-- Doumentación de [Ekisa.Chatbots](https://github.com/Ekisa-Team/Ekisa.Chatbots)
-- Documentación de [Ekisa.Chatbots.Middleware](https://github.com/Ekisa-Team/Ekisa.Chatbots.Api)
-- Documentación de [Ekisa.Chatbots.Listener](https://github.com/Ekisa-Team/Ekisa.Chatbots.Listener)
+- Doumentación de [Kibot](https://github.com/Ekisa-Team/Kibot)
+- Documentación de [Kibot.Quiron.Middleware](https://github.com/Ekisa-Team/Kibot.Quiron.Middleware)
+- Documentación de [Kibot.Quiron.Listener](https://github.com/Ekisa-Team/Kibot.Quiron.Listener)

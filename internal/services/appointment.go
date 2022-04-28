@@ -8,7 +8,7 @@ import (
 	"net/http"
 	"time"
 
-	"github.com/Ekisa-Team/ekisa-chatbots-cli/pkg/appointment"
+	"github.com/Ekisa-Team/kibot-cli/pkg/appointment"
 )
 
 type AppointmentService struct {

@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-package=github.com/Ekisa-Team/ekisa-chatbots-cli
+package=github.com/Ekisa-Team/kibot-cli
 
 platforms=("windows/amd64" "windows/386")
 

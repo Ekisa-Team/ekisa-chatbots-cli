@@ -5,8 +5,8 @@ import (
 	"log"
 	"os"
 
-	"github.com/Ekisa-Team/ekisa-chatbots-cli/internal/services"
-	"github.com/Ekisa-Team/ekisa-chatbots-cli/pkg/appointment"
+	"github.com/Ekisa-Team/kibot-cli/internal/services"
+	"github.com/Ekisa-Team/kibot-cli/pkg/appointment"
 	"github.com/spf13/cobra"
 	"github.com/spf13/viper"
 )

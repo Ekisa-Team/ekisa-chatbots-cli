@@ -3,7 +3,7 @@ package prepare
 import (
 	"log"
 
-	"github.com/Ekisa-Team/ekisa-chatbots-cli/internal/services"
+	"github.com/Ekisa-Team/kibot-cli/internal/services"
 	"github.com/spf13/cobra"
 )
 

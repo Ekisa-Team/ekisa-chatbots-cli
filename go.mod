@@ -1,4 +1,4 @@
-module github.com/Ekisa-Team/ekisa-chatbots-cli
+module github.com/Ekisa-Team/kibot-cli
 
 go 1.18
 
