@@ -28,9 +28,15 @@ iwr -useb https://raw.githubusercontent.com/Ekisa-Team/kibot-cli/main/script/ins
 
 Una vez instalado, ejecutar `kibot help` para recibir instrucciones y verificar que la instalación fue exitosa.
 
-> En caso de que el binario instalado sea el de 32 bits, se debe utilizar el comando `kibot32` en lugar de `kibot`
+> **Nota:** Si obtiene un error al momento de intentar instalar, es posible que deba cambiar la política de ejecución de `PowerShell` con el siguiente comando:
 
-Adicionalmente los binarios en las arquitecturas de 32 y 64 bits se encuentran disponibles en la [página de releases](https://github.com/Ekisa-Team/kibot-cli/releases/latest), en la sección de **assets**.
+```ps1
+Set-ExecutionPolicy RemoteSigned -scope CurrentUser
+```
+
+> **Nota:** En caso de que el binario instalado sea de 32 bits, se debe utilizar el comando `kibot32` en lugar de `kibot`
+
+> **Nota:** Los binarios en las arquitecturas de 32 y 64 bits se encuentran disponibles en la [página de releases](https://github.com/Ekisa-Team/kibot-cli/releases/latest), en la sección de **assets**.
 
 ## **Desinstalación**
 
@@ -97,7 +103,7 @@ Global flags:
 
 ```go
 Usage:
-  kibot appointment prepare [flags]
+  kibot prepare [flags]
 
 Flags:
   -h, --help         // Ayudas para el comando prepare
@@ -110,7 +116,7 @@ Global flags:
 
 ```go
 Usage:
-  kibot appointment upload [flags]
+  kibot upload [flags]
 
 Flags:
   -h, --help         // Ayudas para el comando upload
