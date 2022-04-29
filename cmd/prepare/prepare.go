@@ -7,8 +7,6 @@ import (
 	"github.com/spf13/cobra"
 )
 
-var proxy = services.NewProxy()
-
 func NewCmdPrepare() *cobra.Command {
 	cmd := &cobra.Command{
 		Use:   "prepare",
@@ -21,6 +19,8 @@ func NewCmdPrepare() *cobra.Command {
 
 // Prepare appointments
 func prepareAppointments(cmd *cobra.Command, args []string) {
+	proxy := services.NewProxy()
+
 	msg, err := proxy.AppointmentService.PrepareAppointments()
 	if err != nil {
 		log.Fatal(err)

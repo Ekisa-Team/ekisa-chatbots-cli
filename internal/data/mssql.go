@@ -2,12 +2,12 @@ package data
 
 import (
 	"database/sql"
-	"os"
 
 	_ "github.com/denisenkom/go-mssqldb"
+	"github.com/spf13/viper"
 )
 
 func getConnection() (*sql.DB, error) {
-	conn := os.Getenv("CONN_STRING")
+	conn := viper.GetString("connection_string")
 	return sql.Open("mssql", conn)
 }

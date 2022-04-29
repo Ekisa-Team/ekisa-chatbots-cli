@@ -11,8 +11,6 @@ import (
 	"github.com/spf13/viper"
 )
 
-var proxy = services.NewProxy()
-
 func NewCmdUpload() *cobra.Command {
 	cmd := &cobra.Command{
 		Use:   "upload",
@@ -24,6 +22,8 @@ func NewCmdUpload() *cobra.Command {
 }
 
 func uploadAppointments(cmd *cobra.Command, args []string) {
+	proxy := services.NewProxy()
+
 	// Fetch appointments
 	appointments, err := proxy.AppointmentService.FetchAppointments()
 	if err != nil {
