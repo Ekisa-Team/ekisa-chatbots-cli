@@ -65,7 +65,7 @@ func initConfig() {
 		if err := viper.ReadInConfig(); err != nil {
 			log.Fatal(err)
 		} else {
-			log.Printf("\033[1;34m%s\033[0m", "Using config file: "+viper.ConfigFileUsed())
+			log.Printf("Using config file: " + viper.ConfigFileUsed())
 		}
 	} else {
 		// if --config is not passed, adds multiple locations to search for config file
